@@ -39,9 +39,6 @@ void calculate(Suplier suplier[], int n) {
 		// jumlahkan semua total barang yang harus di bayarkan
 		grandTotal += suplier[i]._bayar;
 	}
-
-	// hitung kembalian
-	kembali = bayar - grandTotal;
 }
 
 void inputTunai() {
@@ -49,6 +46,9 @@ void inputTunai() {
 }
 
 void outputTunai() {
+	// hitung kembalian
+	kembali = bayar - grandTotal;
+	
 	cout << "Bayar: " << bayar << '\n';
 	cout << "Kembali: " << kembali << '\n';
 }
