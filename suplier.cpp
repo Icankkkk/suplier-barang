@@ -24,18 +24,40 @@ void inputData(Suplier suplier[], int n) {
 void calculate(Suplier suplier[], int n) {
 	for (int i = 0; i < n; i++) {
 		suplier[i]._total = suplier[i]._hargaBarang * suplier[i]._jumlahBarang;
+
 		// jika diskon
-		if (suplier[i]._total >= 100000) {
-			suplier[i]._diskon = (suplier[i]._total * 10) / 100;
-			suplier[i]._bayar = suplier[i]._total - suplier[i]._diskon;
-		} 
-		else if (suplier[i]._total >= 50000) {
-			suplier[i]._diskon = (suplier[i]._total * 5) / 100;
-			suplier[i]._bayar = suplier[i]._total - suplier[i]._diskon;
-		} else {
+		if (suplier[i]._total <= 50000) 
+		{
+			suplier[i]._detailDiskon = "-(0%)";
 			suplier[i]._bayar = suplier[i]._total;
 		}
-		
+		else 
+		{
+			if (suplier[i]._total > 50000 && suplier[i]._total <= 100000)
+			{
+				suplier[i]._detailDiskon = "-(5%)";
+				suplier[i]._diskon = (suplier[i]._total * 5) / 100;
+				suplier[i]._bayar = suplier[i]._total - suplier[i]._diskon;
+			}
+			else if (suplier[i]._total > 100000 && suplier[i]._total <= 200000)
+			{
+				suplier[i]._detailDiskon = "-(10%)";
+				suplier[i]._diskon = (suplier[i]._total * 10) / 100;
+				suplier[i]._bayar = suplier[i]._total - suplier[i]._diskon;
+			}
+			else if (suplier[i]._total > 200000 && suplier[i]._total <= 400000)
+			{
+				suplier[i]._detailDiskon = "-(15%)";
+				suplier[i]._diskon = (suplier[i]._total * 15) / 100;
+				suplier[i]._bayar = suplier[i]._total - suplier[i]._diskon;
+			} 
+			else
+			{
+				suplier[i]._detailDiskon = " (25%)";
+				suplier[i]._diskon = (suplier[i]._total * 25) / 100;
+				suplier[i]._bayar = suplier[i]._total - suplier[i]._diskon;
+			}
+		}
 		// jumlahkan semua total barang yang harus di bayarkan
 		grandTotal += suplier[i]._bayar;
 	}
@@ -57,7 +79,7 @@ void outputTunai() {
 void outputData(Suplier suplier[], int n) {
 	pembatas('=', 100);
 	for (int i = 0; i < n; i++) {
-		cout << "Nama barang: " << suplier[i]._namaBarang << " | " << "Jumlah: " << suplier[i]._jumlahBarang << " | " << "Harga: " << suplier[i]._hargaBarang << " | " << "Total: " << suplier[i]._total << " | " << "Diskon: " << suplier[i]._diskon << " | " << "Bayar: " << suplier[i]._bayar << '\n';
+		cout << "Nama barang: " << suplier[i]._namaBarang << " | " << "Jumlah: " << suplier[i]._jumlahBarang << " | " << "Harga: " << suplier[i]._hargaBarang << " | " << "Total: " << suplier[i]._total << " | " << "Diskon: " << suplier[i]._diskon << suplier[i]._detailDiskon << " | " << "Bayar: " << suplier[i]._bayar << '\n';
 	}
 	pembatas('=', 100);
 	cout << "Grand total: " << grandTotal << '\n';

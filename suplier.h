@@ -5,15 +5,19 @@
 
 struct Suplier {
 	std::string _namaBarang;
+	std::string _detailDiskon;
 	int _jumlahBarang;
-	int _hargaBarang;
-	long int _total;
-	int _diskon;
-	long int _bayar;	
+	float _hargaBarang;
+	float _total;
+	float _diskon;
+	float _bayar;	
 };
 
-long int grandTotal;
-long int bayar;
-long int kembali;
+float  grandTotal;
+float  bayar;
+float  kembali;
+
+std::string nama;
+std::string alamat;
 
 #endif
